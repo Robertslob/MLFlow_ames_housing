@@ -78,7 +78,7 @@ def train_and_log():
     cat_cols += numeric_but_categorical
 
     for c in cat_cols:
-        X[c] = X[c].astype("category")
+        X[c] = X[c].astype("category").cat.codes
         
     # ---- 3. Split ----
 
