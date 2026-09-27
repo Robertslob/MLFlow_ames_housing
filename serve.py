@@ -3,7 +3,7 @@ import mlflow
 import pandas as pd
 import numpy as np
 from config import MODEL_NAME
-from src.prepare_input import prepare_X
+from src.features import prepare_X
 
 app = FastAPI()
 

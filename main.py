@@ -21,7 +21,7 @@ import lightgbm as lgb
 import mlflow
 import mlflow.lightgbm
 import hashlib
-from src.prepare_input import prepare_X
+from src.features import prepare_X
 
 # ---- Configuration ----
 from config import MODEL_NAME, TARGET

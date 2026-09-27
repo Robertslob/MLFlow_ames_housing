@@ -10,7 +10,7 @@ from sklearn.metrics import (
 )
 import mlflow
 import mlflow.lightgbm
-from src.prepare_input import prepare_X
+from src.features import prepare_X
 
 # ---- Configuration ----
 from config import MODEL_NAME, TARGET
