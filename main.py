@@ -77,7 +77,19 @@ X_train, X_test, y_train, y_test = train_test_split(
 mlflow.set_experiment("ames-housing-regression")
 
 with mlflow.start_run():
-    mlflow.log_params({"n_estimators": 2000, "learning_rate": 0.03, "num_leaves": 31, "random_state": 42})
+    mlflow.log_dict(
+        {"features": list(X_train.columns)},
+        "features.json"
+    )
+    
+    mlflow.log_params({
+        "n_estimators": 2000, 
+        "learning_rate": 0.03, 
+        "num_leaves": 31, 
+        "random_state": 42,
+        "n_features": X_train.shape[1],
+    })
+    
     model = lgb.LGBMRegressor(
         n_estimators=2000,
         learning_rate=0.03,
