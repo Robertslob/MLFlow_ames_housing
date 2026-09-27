@@ -25,7 +25,7 @@ import hashlib
 # ---- Configuration ----
 
 # Model name
-MODEL_NAME = "ames-housing-lgbm"
+MODEL_NAME = "ames-housing-lgbm-native-cats"
 
 # Target variable
 TARGET = 'SalePrice'
@@ -78,7 +78,7 @@ def train_and_log():
     cat_cols += numeric_but_categorical
 
     for c in cat_cols:
-        X[c] = X[c].astype("category").cat.codes
+        X[c] = X[c].astype("category")
         
     # ---- 3. Split ----
 
@@ -148,7 +148,7 @@ def train_and_log():
         model_info = mlflow.lightgbm.log_model(
             model,
             "model",
-            input_example=X_train.head(5),
+            # input_example=X_train.head(5),
             registered_model_name=MODEL_NAME
         )
         
