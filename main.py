@@ -8,6 +8,7 @@ and point CSV_PATH below at it (the file is usually called "AmesHousing.csv").
 """
 
 # ---- 0. Imports ----
+
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -19,6 +20,7 @@ from sklearn.metrics import (
 import lightgbm as lgb
 import mlflow
 import mlflow.lightgbm
+import hashlib
 
 # ---- 1. Load data----
 df = pd.read_csv('data/AmesHousing.csv')
@@ -77,6 +79,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 mlflow.set_experiment("ames-housing-regression")
 
 with mlflow.start_run():
+    feature_hash = hashlib.md5(",".join(sorted(X_train.columns)).encode()).hexdigest()[:8]
+    
     mlflow.log_dict(
         {"features": list(X_train.columns)},
         "features.json"
@@ -84,15 +88,16 @@ with mlflow.start_run():
     
     mlflow.log_params({
         "n_estimators": 2000, 
-        "learning_rate": 0.03, 
+        "learning_rate": 0.05, 
         "num_leaves": 31, 
         "random_state": 42,
         "n_features": X_train.shape[1],
+        "feature_hash": feature_hash,
     })
     
     model = lgb.LGBMRegressor(
         n_estimators=2000,
-        learning_rate=0.03,
+        learning_rate=0.05,
         num_leaves=31,
         random_state=42,
     )
