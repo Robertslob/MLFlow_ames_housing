@@ -14,7 +14,7 @@ import mlflow.lightgbm
 # ---- Configuration ----
 
 # Model name
-MODEL_NAME = "ames-housing-lgbm"
+MODEL_NAME = "ames-housing-lgbm-native-cats"
 
 # Target variable
 TARGET = 'SalePrice'
