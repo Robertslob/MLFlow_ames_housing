@@ -3,3 +3,4 @@ data/
 mlruns/
 mlflow.db
 src/__pycache__/
+__pycache__/
