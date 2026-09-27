@@ -89,7 +89,7 @@ with mlflow.start_run():
     mlflow.log_params({
         "n_estimators": 2000, 
         "learning_rate": 0.05, 
-        "num_leaves": 31, 
+        "num_leaves": 100, 
         "random_state": 42,
         "n_features": X_train.shape[1],
         "feature_hash": feature_hash,
