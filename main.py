@@ -87,7 +87,7 @@ with mlflow.start_run():
     )
     
     n_estimators = 2000
-    num_leaves = 10
+    num_leaves = 20
     learning_rate = .05
     random_state = 42    
     
