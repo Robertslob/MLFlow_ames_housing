@@ -25,7 +25,7 @@ import hashlib
 # ---- Configuration ----
 
 # Model name
-MODEL_NAME = "ames-housing-lgbm-native-cats"
+MODEL_NAME = "ames-housing-lgbm"
 
 # Target variable
 TARGET = 'SalePrice'
